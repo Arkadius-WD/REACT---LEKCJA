@@ -1,18 +1,15 @@
 {
-	"name": "todos-back-end",
-	"version": "1.0.0",
-	"description": "",
-	"main": "serwer.js",
-	"type": "module",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "nodemon serwer.js"
-	},
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"cors": "^2.8.5",
-		"express": "^4.18.2",
-		"nodemon": "^3.0.2"
-	}
+    "name": "back-end",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "json-server --watch db.json"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "json-server": "^0.17.3"
+    }
 }
