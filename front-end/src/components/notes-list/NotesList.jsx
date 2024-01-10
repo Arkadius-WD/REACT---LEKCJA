@@ -69,7 +69,7 @@ const NotesList = () => {
 				</TopBar>
 
 				{notes
-					.filter((note) => note.folderId === folderId)
+					.filter((note) => note.folderId === Number(folderId))
 					.map((note, idx) => (
 						<ShortNote role="listitem" key={idx} note={note}></ShortNote>
 					))}
