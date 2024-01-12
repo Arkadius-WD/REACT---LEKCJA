@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import FoldersList from "./components/folders-list/FoldersList";
+import { FoldersList } from "./components/folders-list/FoldersList";
 import Layout from "./components/layout/Layout";
 
-function App() {
+export function App() {
 	return (
 		<Layout>
 			<FoldersList />
@@ -10,5 +10,3 @@ function App() {
 		</Layout>
 	);
 }
-
-export default App;
