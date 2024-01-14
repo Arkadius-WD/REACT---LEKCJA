@@ -11,14 +11,6 @@
     {
       "name": "Nowy folder",
       "id": 3
-    },
-    {
-      "name": "Nowy folder 2",
-      "id": 4
-    },
-    {
-      "name": "Nowy folder 3",
-      "id": 5
     }
   ],
   "archive": [],
@@ -33,7 +25,7 @@
       "id": 7,
       "title": "Sun Tzu",
       "folderId": 2,
-      "body": "Osiągnąć sto zwycięstw w stu bitwach nie jest szczytem umiejętności. Szczytem umiejętności jest pokonanie przeciwnika bez walki..."
+      "body": "Osiągnąć sto zwycięstw w stu bitwach nie jest szczytem umiejętności. Szczytem umiejętności jest pokonanie przeciwnika bez walki."
     },
     {
       "title": "Lista zakupów na wakacje",
@@ -43,7 +35,7 @@
     },
     {
       "title": "Lista zakupów",
-      "body": "\n1. Herbata,\n2. Ziemianki,\n 3. Woda gazowana\n\n",
+      "body": "\n1. Herbata,\n2. Ziemianki,\n 3. Woda gazowana\n",
       "folderId": 1,
       "id": 10
     },
@@ -52,30 +44,6 @@
       "body": "\n1. Napisać odcinki\n2. Nargrać odcinki",
       "folderId": 1,
       "id": 15
-    },
-    {
-      "title": "Nowa notatka!!!",
-      "body": "Zmiana tekstu\n\n\nasasdsa\n\naaa",
-      "folderId": 3,
-      "id": 16
-    },
-    {
-      "title": "hello",
-      "body": "Jak sie Masz d",
-      "folderId": 4,
-      "id": 17
-    },
-    {
-      "title": "Nowa notatka!!",
-      "body": "Nowy tekst test\n\naaaaa\n",
-      "folderId": 1,
-      "id": 18
-    },
-    {
-      "title": "Nowa notatka !!!",
-      "body": "Treść notatki teste test",
-      "folderId": 5,
-      "id": 19
     }
   ]
 }
