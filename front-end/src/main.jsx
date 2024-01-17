@@ -5,16 +5,18 @@ import { App } from "./App";
 import { NotesList } from "./components/notes-list/NotesList";
 import { deleteNote, Note } from "./components/note/Note";
 import { createFolder } from "./components/folders-list/FoldersList";
-import { createNote } from "./components/notes-list/NotesList";
+import { createNewNote } from "./components/notes-list/NotesList";
 import { updateNote } from "./components/note/Note";
 import { NotFound } from "./components/not-found/NotFound";
 
 const router = createBrowserRouter([
 	{
-		path: "/",
 		element: <App />,
+		path: "/",
 		action: createFolder,
-		errorElement: <NotFound />,
+		loader: () => {
+			return fetch("http://localhost:3000/folders");
+		},
 		shouldRevalidate: ({ formAction }) => {
 			if (formAction === "/") {
 				return true;
@@ -22,14 +24,45 @@ const router = createBrowserRouter([
 				return false;
 			}
 		},
-		loader: () => {
-			return fetch("http://localhost:3000/folders");
-		},
+		errorElement: <NotFound />,
 		children: [
 			{
-				path: "/notes/:folderId",
+				path: "archive",
 				element: <NotesList />,
-				action: createNote,
+				loader: () => {
+					return fetch("http://localhost:3000/archive");
+				},
+				children: [
+					{
+						path: `:noteId`,
+						element: <Note />,
+						action: updateNote,
+						errorElement: <NotFound />,
+						loader: async ({ params }) => {
+							const result = await fetch(
+								`http://localhost:3000/archive/${params.noteId}`
+							);
+
+							if (result.status === 404) {
+								throw new Error();
+							}
+
+							return result.json();
+						},
+						shouldRevalidate: ({ formAction }) => {
+							if (formAction) {
+								return false;
+							} else {
+								return true;
+							}
+						},
+					},
+				],
+			},
+			{
+				path: "notes/:folderId",
+				element: <NotesList />,
+				action: createNewNote,
 				loader: ({ params }) => {
 					return fetch(
 						`http://localhost:3000/notes?folderId=${params.folderId}`
@@ -37,7 +70,7 @@ const router = createBrowserRouter([
 				},
 				children: [
 					{
-						path: "/notes/:folderId/note/:noteId",
+						path: `note/:noteId`,
 						element: <Note />,
 						action: updateNote,
 						errorElement: <NotFound />,
@@ -48,8 +81,15 @@ const router = createBrowserRouter([
 
 							if (result.status === 404) {
 								throw new Error();
+							}
+
+							return result.json();
+						},
+						shouldRevalidate: ({ formAction }) => {
+							if (formAction) {
+								return false;
 							} else {
-								return result.json();
+								return true;
 							}
 						},
 						children: [

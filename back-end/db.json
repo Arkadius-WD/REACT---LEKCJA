@@ -11,9 +11,38 @@
     {
       "name": "Nowy folder",
       "id": 3
+    },
+    {
+      "name": "Nowy folder 2",
+      "id": 4
     }
   ],
-  "archive": [],
+  "archive": [
+    {
+      "title": "Nowa notatka!",
+      "body": "Nowa treść notatki",
+      "folderId": "3",
+      "id": 1
+    },
+    {
+      "title": "Nowa notatka",
+      "body": "Treść notatki",
+      "folderId": "4",
+      "id": 2
+    },
+    {
+      "title": "Nowa notatka",
+      "body": "Treść notatki",
+      "folderId": "4",
+      "id": 3
+    },
+    {
+      "title": "Nowa notatka",
+      "body": "Treść notatki",
+      "folderId": "4",
+      "id": 4
+    }
+  ],
   "notes": [
     {
       "id": 5,
@@ -47,15 +76,15 @@
     },
     {
       "title": "Nowa notatka",
-      "body": "Treść",
-      "folderId": 3,
-      "id": 16
+      "body": "Treść notatki",
+      "folderId": 4,
+      "id": 18
     },
     {
       "title": "Nowa notatka",
-      "body": "hej jak się masz",
-      "folderId": 3,
-      "id": 17
+      "body": "Treść notatki",
+      "folderId": 4,
+      "id": 19
     }
   ]
 }

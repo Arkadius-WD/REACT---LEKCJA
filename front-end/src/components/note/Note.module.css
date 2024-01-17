@@ -1,6 +1,6 @@
 .image {
-	width: 12px;
-	height: 12px;
+	width: 14px;
+	height: 14px;
 }
 
 .container {
@@ -13,8 +13,13 @@
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
-	margin-left: 0;
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.restore {
 	margin-right: auto;
+	margin-left: 0;
 }
 
 .note-editor {

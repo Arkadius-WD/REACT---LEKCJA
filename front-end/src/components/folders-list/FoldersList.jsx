@@ -44,6 +44,7 @@ export function FoldersList() {
 						type="text"
 						placeholder="Nazwa folderu"
 						name="folder-name"
+						required
 					/>
 					<AddNewButton type="submit">+</AddNewButton>
 				</Form>
@@ -59,7 +60,9 @@ export function FoldersList() {
 					</NavLink>
 				))}
 			</UserCreatedFolders>
-			<Folder icon="archive">Archiwum</Folder>
+			<NavLink to="archive">
+				<Folder icon="archive">Archiwum</Folder>
+			</NavLink>
 		</Folders>
 	);
 }

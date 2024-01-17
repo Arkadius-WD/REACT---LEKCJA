@@ -8,7 +8,7 @@ import {
 	NavLink,
 	Outlet,
 	Form,
-	redirect,
+	useLocation,
 } from "react-router-dom";
 
 const NotesContainer = ({ children }) => (
@@ -21,7 +21,7 @@ const Notes = ({ children }) => (
 	</div>
 );
 
-export function createNote({ params }) {
+export function createNewNote({ params }) {
 	return fetch("http://localhost:3000/notes", {
 		method: "Post",
 		headers: {
@@ -32,15 +32,12 @@ export function createNote({ params }) {
 			body: "Treść notatki",
 			folderId: Number(params.folderId),
 		}),
-	})
-		.then((response) => response.json())
-		.then((newNote) => {
-			return redirect(`/notes/${newNote.folderId}/note/${newNote.id}`);
-		});
+	});
 }
 
 export function NotesList() {
 	const notes = useLoaderData();
+	const location = useLocation();
 
 	return (
 		<NotesContainer>
@@ -54,7 +51,14 @@ export function NotesList() {
 				</TopBar>
 
 				{notes.map((note) => (
-					<NavLink key={note.id} to={`/notes/${note.folderId}/note/${note.id}`}>
+					<NavLink
+						key={note.id}
+						to={
+							location.pathname === "/archive"
+								? `/archive/${note.id}`
+								: `/notes/${note.folderId}/note/${note.id}`
+						}
+					>
 						{({ isActive }) => (
 							<ShortNote
 								active={isActive}
