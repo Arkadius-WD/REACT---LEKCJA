@@ -1,3 +1,5 @@
+Ten folder zawiera prosty serwer, dzięki któremu będziemy mogli odczytać listę folderów oraz notatek. Umożliwia on też tworzenie nowych folderów i notatek oraz edycje już isniejących notatek.
+
 Żeby uruchomić server wywołaj w terminalu na poziomie folderu `back-end` komendy:
 
 ```command
@@ -13,7 +15,7 @@ Możesz również wywołać te same komendy folder wyżej - wtedy uruchomisz jed
 
 Elementy zwracane i zapisywane do serwera mają następujące pola:
 
-```javascripton
+```json
 {
     "id": 1,
     "name": "Folder nr. 1"
@@ -24,7 +26,7 @@ Elementy zwracane i zapisywane do serwera mają następujące pola:
 
 Elementy zwracane i zapisywane do serwera mają następujące pola:
 
-```javascripton
+```json
 {
     "id": 1,
     "title": "Tytuł notatki nr. 1",
@@ -51,7 +53,7 @@ Elementy zwracane i zapisywane do serwera mają następujące pola:
 <br>
 Wywołanie:
 
-```javascript
+```js
 fetch('http://localhost:3000/folders`)
     .then(res => res.json())
     .console.log(res => res.json());
@@ -59,16 +61,16 @@ fetch('http://localhost:3000/folders`)
 
 Konsola:
 
-```javascript
+```js
 [
-	{
-		id: 1,
-		name: "Folder nr. 1",
-	},
-	{
-		id: 2,
-		name: "Folder nr. 2",
-	},
+    {
+        id: 1,
+        name: "Folder nr. 1",
+    },
+    {
+        id: 2,
+        name: "Folder nr. 2",
+    },
 ];
 ```
 
@@ -78,26 +80,26 @@ Konsola:
 <br>
 Wywołanie:
 
-```javascript
+```js
 fetch("http://localhost:3000/folders", {
-	method: "POST",
-	headers: {
-		"Content-Type": "application/json",
-	},
-	body: JSON.stringify({ name: "Nowy folder" }),
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name: "Nowy folder" }),
 })
-	.then((res) => res.json())
-	.console.log((res) => res.json());
+    .then((res) => res.json())
+    .console.log((res) => res.json());
 ```
 
 Konsola:
 
-```javascript
+```js
 [
-	{
-		id: 1,
-		name: "Nowy folder",
-	},
+    {
+        id: 1,
+        name: "Nowy folder",
+    },
 ];
 ```
 
@@ -108,7 +110,7 @@ Konsola:
 <br>
 Wywołanie:
 
-```javascript
+```js
     fetch('http://localhost:3000/notes?folderId=1`)
         .then(res => res.json())
         .console.log(res => res.json());
@@ -116,18 +118,18 @@ Wywołanie:
 
 Konsola:
 
-```javascript
+```js
 [
-	{
-		id: 1,
-		title: "Tytuł notatki nr. 1",
-		body: "Treść notatki nr. 1",
-	},
-	{
-		id: 2,
-		title: "Tytuł notatki nr. 2",
-		body: "Treść notatki nr. 2",
-	},
+    {
+        id: 1,
+        title: "Tytuł notatki nr. 1",
+        body: "Treść notatki nr. 1",
+    },
+    {
+        id: 2,
+        title: "Tytuł notatki nr. 2",
+        body: "Treść notatki nr. 2",
+    },
 ];
 ```
 
@@ -138,24 +140,24 @@ Konsola:
 <br>
 Wywołanie:
 
-```javascript
+```js
 fetch("http://localhost:3000/notes", {
-	method: "POST",
-	headers: {
-		"Content-Type": "application/json",
-	},
-	body: JSON.stringify({
-		title: "Tytuł nowej notatki",
-		body: "Treść nowej notatki",
-	}),
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+        title: "Tytuł nowej notatki",
+        body: "Treść nowej notatki",
+    }),
 })
-	.then((res) => res.json())
-	.console.log((res) => res.json());
+    .then((res) => res.json())
+    .console.log((res) => res.json());
 ```
 
 Konsola:
 
-```javascript
+```js
 {
     "title": "Tytuł nowej notatki",
     "body": "Treść nowej notatki"
@@ -169,15 +171,15 @@ Konsola:
 <br>
 Wywołanie:
 
-```javascript
+```js
 fetch("http://localhost:3000/notes/1")
-	.then((res) => res.json())
-	.console.log((res) => res.json());
+    .then((res) => res.json())
+    .console.log((res) => res.json());
 ```
 
 Konsola:
 
-```javascript
+```js
 {
     "id": 1,
     "title": "Tytuł notatki nr. 1",
@@ -192,24 +194,24 @@ Konsola:
 <br>
 Wywołanie:
 
-```javascript
+```js
 fetch("http://localhost:3000/notes/1", {
-	method: "PATCH",
-	headers: {
-		"Content-Type": "application/json",
-	},
-	body: JSON.stringify({
-		title: "Zaktualizowany tytuł",
-		body: "Zaktualizowana treść",
-	}),
+    method: "PATCH",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+        title: "Zaktualizowany tytuł",
+        body: "Zaktualizowana treść",
+    }),
 })
-	.then((res) => res.json())
-	.console.log((res) => res.json());
+    .then((res) => res.json())
+    .console.log((res) => res.json());
 ```
 
 Konsola:
 
-```javascript
+```js
 {
     "id": 1,
     "title": "Zaktualizowany tytuł",

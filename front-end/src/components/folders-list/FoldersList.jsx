@@ -47,6 +47,7 @@ const FoldersList = () => {
 						type="text"
 						placeholder="Nazwa folderu"
 						name="folder-name"
+						required
 					/>
 					<AddNewButton type="submit">+</AddNewButton>
 				</Form>

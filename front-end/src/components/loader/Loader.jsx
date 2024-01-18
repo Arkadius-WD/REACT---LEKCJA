@@ -1,14 +1,10 @@
 import styles from "./Loader.module.css";
+import LoaderImage from "../../assets/loader.gif";
 
 export function Loader() {
     return (
         <div className={styles.loader}>
-            <div className={styles["lds-ring"]}>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+            <img src={LoaderImage}></img>
         </div>
     );
 }
