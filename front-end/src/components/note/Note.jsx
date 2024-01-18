@@ -101,7 +101,7 @@ const Note = () => {
 		debounce((event) => {
 			const form = event.target.closest("form");
 			submit(form, { method: "PATCH" });
-		}, 100),
+		}, 300),
 		[debounce, submit]
 	);
 
