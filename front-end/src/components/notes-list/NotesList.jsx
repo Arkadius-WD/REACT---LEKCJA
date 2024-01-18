@@ -3,7 +3,7 @@ import { Title } from "../title/Title";
 import { AddNewButton } from "../add-new-button/AddNewButton";
 import { TopBar } from "../top-bar/TopBar";
 import { ShortNote } from "../short-note/ShortNote";
-import { Note } from "../note/Note";
+
 import {
 	useLoaderData,
 	NavLink,
