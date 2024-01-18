@@ -29,7 +29,7 @@ export function createNewNote({ params }) {
 		},
 		body: JSON.stringify({
 			title: "Nowa notatka",
-			body: "Treść notatki",
+			body: "Tutaj wpisz treśc swojej notatki",
 			folderId: Number(params.folderId),
 		}),
 	});

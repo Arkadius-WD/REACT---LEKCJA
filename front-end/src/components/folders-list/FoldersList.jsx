@@ -5,6 +5,27 @@ import { TopBar } from "../top-bar/TopBar";
 import { AddNewButton } from "../add-new-button/AddNewButton";
 import { NavLink, useLoaderData, Form, redirect } from "react-router-dom";
 
+export async function createFolder(args) {
+	const data = await args.request.formData();
+	const folderName = data.get("folder-name");
+
+	return fetch(`http://localhost:3000/folders`, {
+		method: "POST",
+		body: JSON.stringify({
+			name: folderName,
+		}),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.then((newFolder) => {
+			return redirect(`/notes/${newFolder.id}`);
+		});
+}
+
 const Folders = ({ children }) => (
 	<div className={styles["folders-column"]}>{children}</div>
 );
@@ -14,25 +35,7 @@ const UserCreatedFolders = ({ children }) => (
 	</div>
 );
 
-export async function createFolder(args) {
-	const data = await args.request.formData();
-	const folderName = data.get("folder-name");
-	return fetch("http://localhost:3000/folders", {
-		method: "POST",
-		body: JSON.stringify({
-			name: folderName,
-		}),
-		headers: {
-			"Content-type": "application/json",
-		},
-	})
-		.then((response) => response.json())
-		.then((newFolder) => {
-			return redirect(`/notes/${newFolder.id}`);
-		});
-}
-
-export function FoldersList() {
+const FoldersList = () => {
 	const folders = useLoaderData();
 
 	return (
@@ -44,7 +47,6 @@ export function FoldersList() {
 						type="text"
 						placeholder="Nazwa folderu"
 						name="folder-name"
-						required
 					/>
 					<AddNewButton type="submit">+</AddNewButton>
 				</Form>
@@ -61,8 +63,10 @@ export function FoldersList() {
 				))}
 			</UserCreatedFolders>
 			<NavLink to="archive">
-				<Folder icon="archive">Archiwum</Folder>
+				<Folder>Archiwum</Folder>
 			</NavLink>
 		</Folders>
 	);
-}
+};
+
+export default FoldersList;
